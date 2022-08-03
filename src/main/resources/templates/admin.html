@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+<!--навбар-->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid ">
+        <p class="navbar-brand text-white" id="user_info_navbar">
+            <!--            <span class="align-middle">##Unknown User##</span></b>-->
+            <!--            <span class="align-middle">with roles:</span>-->
+            <!--            <span class="align-middle">##Unknown##</span>-->
+        </p>
+        <ul class="navbar-nav px-4">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link nav-item text-nowrap" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<br>
+<div class="container-fluid">
+    <div class="row nav ">
+
+        <!--выбор страницы-->
+        <div class="col-2">
+            <ul class="nav flex-column">
+                <li class="nav-item ">
+                    <a class="nav-link active bg-primary text-white" href="/admin">Admin</a>
+                    <a class="nav-link " href="/user">User</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!--страница админа-->
+        <div class="col-10 tab-content bg-light">
+            <h1 class="text-start">Admin Panel</h1>
+
+            <!--Переключение вкладок-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link active" id="usersTableLi" data-toggle="tab" href="#usersTable" role="tab"
+                       aria-controls="home" aria-selected="true">Users Table</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " id="newUserLi" data-toggle="tab" href="#newUser" role="tab"
+                       aria-controls="profile" aria-selected="false">New User</a>
+                </li>
+
+            </ul>
+
+
+            <!--Вкладки-->
+            <div class="tab-content" id="myTabContent">
+                <!--1 вкладка с таблицей-->
+                <div class="tab-pane fade show active" id="usersTable" role="tabpanel" aria-labelledby="home-tab">
+                    <h5 class="card-header">All users</h5>
+                    <!--Заполнить вкладку с таблицей-->
+                    <table class="table table-striped ">
+
+                        <!--Заголовок таблицы-->
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+
+                        </tr>
+                        </thead>
+                        <!--Строки таблицы-->
+                        <tbody id="user_list">
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+
+                <!--2 вкладка с новым юзером-->
+                <div class="tab-pane fade " id="newUser" role="tabpanel" aria-labelledby="profile-tab">
+                    <h5 class="card-header">Add new user</h5>
+                    <div class="container bg-white text-center fw-bolder">
+                        <div class="row justify-content-center">
+
+                            <div class="col-4 " >
+
+                                <form id="add_user">
+
+                                    <br>
+                                    <!--first name-->
+                                    <div class="form-group">
+                                        <label for="add_FirstName"><h6>First Name</h6></label>
+                                        <input type="text" class="form-control" id="add_FirstName"
+                                               placeholder="First Name">
+                                    </div>
+
+                                    <!--Last name-->
+                                    <div class="form-group">
+                                        <label for="add_LastName"><h6>Last Name</h6></label>
+                                        <input type="text" class="form-control" id="add_LastName"
+                                               placeholder="Last Name">
+                                    </div>
+
+                                    <!--age-->
+                                    <div class="form-group">
+                                        <label for="add_Age"><h6>Age</h6></label>
+                                        <input type="number" min="0" max="127" class="form-control" id="add_Age"
+                                               placeholder="Age">
+                                    </div>
+
+                                    <!-- Email-->
+                                    <div class="form-group">
+                                        <label for="add_Email"><h6>Email</h6></label>
+                                        <input type="email" class="form-control" id="add_Email"
+                                               placeholder="Email">
+                                    </div>
+
+                                    <!--Password-->
+                                    <div class="form-group">
+                                        <label for="add_Password"><h6>Password</h6></label>
+                                        <input type="password" class="form-control" id="add_Password"
+                                               placeholder="Password">
+                                    </div>
+
+                                    <!--Role-->
+                                    <div class="form-group">
+                                        <label for="add_Role"><h6>Role</h6></label>
+                                        <select class="form-control" multiple required="required" size="2" id="add_Role">
+                                            <option value="ADMIN">ADMIN</option>
+                                            <option value="USER">USER</option>
+                                        </select>
+                                    </div>
+
+                                    <!--submit-->
+                                    <button type="submit" class="btn btn-success" multiple size="2" id="add_user_btn">Add new user
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!--Edit Modal Frame-->
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit user</h5>
+                <!--                    крестик для закрытия окна-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <!--тело окна -->
+            <div class="modal-body">
+                <div class="container bg-white text-center fw-bolder">
+                    <div class="row justify-content-center">
+
+                        <div class="col-7 " >
+
+                            <form id="edit_user">
+
+                                <br>
+
+                                <!--Id-->
+                                <div class="form-group">
+                                    <label for="edit_FirstName"><h6>ID</h6></label>
+                                    <input type="text" class="form-control" id="edit_id" disabled
+                                           placeholder="Id">
+                                </div>
+
+                                <!--first name-->
+                                <div class="form-group">
+                                    <label for="edit_FirstName"><h6>First Name</h6></label>
+                                    <input type="text" class="form-control" id="edit_FirstName"
+                                           placeholder="First Name">
+                                </div>
+
+                                <!--Last name-->
+                                <div class="form-group">
+                                    <label for="edit_LastName"><h6>Last Name</h6></label>
+                                    <input type="text" class="form-control" id="edit_LastName"
+                                           placeholder="Last Name">
+                                </div>
+
+                                <!--age-->
+                                <div class="form-group">
+                                    <label for="edit_Age"><h6>Age</h6></label>
+                                    <input type="number" min="0" max="127" class="form-control" id="edit_Age"
+                                           placeholder="Age">
+                                </div>
+
+                                <!-- Email-->
+                                <div class="form-group">
+                                    <label for="edit_Email"><h6>Email</h6></label>
+                                    <input type="email" class="form-control" id="edit_Email"
+                                           placeholder="Email">
+                                </div>
+
+                                <!--Password-->
+                                <div class="form-group">
+                                    <label for="edit_Password"><h6>Password</h6></label>
+                                    <input type="password" class="form-control" id="edit_Password"
+                                           placeholder="Password">
+                                </div>
+
+                                <!--Role-->
+                                <div class="form-group">
+                                    <label for="edit_Role"><h6>Role</h6></label>
+                                    <select class="form-control" multiple required="required" size="2" id="edit_Role">
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="USER">USER</option>
+                                    </select>
+                                </div>
+
+                                <!--submit-->
+                                <!--                                <button type="submit" class="btn btn-success" multiple size="2" id="edit_user_btn">edit new user-->
+                                <!--                                </button>-->
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" id="edit_user_submit_btn">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--delete Modal Frame-->
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle2">Delete user</h5>
+                <!--                    крестик для закрытия окна-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <!--тело окна -->
+            <div class="modal-body">
+                <div class="container bg-white text-center fw-bolder">
+                    <div class="row justify-content-center">
+
+                        <div class="col-7 " >
+
+                            <form id="delete_user">
+
+                                <br>
+                                <!--first name-->
+                                <div class="form-group">
+                                    <label for="delete_FirstName"><h6>Id</h6></label>
+                                    <input type="text" class="form-control" id="delete_id" disabled
+                                           placeholder="First Name">
+                                </div>
+
+                                <!--first name-->
+                                <div class="form-group">
+                                    <label for="delete_FirstName"><h6>First Name</h6></label>
+                                    <input type="text" class="form-control" id="delete_FirstName" disabled
+                                           placeholder="First Name">
+                                </div>
+
+                                <!--Last name-->
+                                <div class="form-group">
+                                    <label for="delete_LastName"><h6>Last Name</h6></label>
+                                    <input type="text" class="form-control" id="delete_LastName" disabled
+                                           placeholder="Last Name">
+                                </div>
+
+                                <!--age-->
+                                <div class="form-group">
+                                    <label for="delete_Age"><h6>Age</h6></label>
+                                    <input type="text" class="form-control" id="delete_Age" disabled
+                                           placeholder="Age">
+                                </div>
+
+                                <!-- Email-->
+                                <div class="form-group">
+                                    <label for="delete_Email"><h6>Email</h6></label>
+                                    <input type="email" class="form-control" id="delete_Email" disabled
+                                           placeholder="Email">
+                                </div>
+
+<!--                                &lt;!&ndash;Password&ndash;&gt;-->
+<!--                                <div class="form-group">-->
+<!--                                    <label for="delete_Password"><h6>Password</h6></label>-->
+<!--                                    <input type="password" class="form-control" id="delete_Password" disabled-->
+<!--                                           placeholder="Password">-->
+<!--                                </div>-->
+
+                                <!--Role-->
+                                <div class="form-group">
+                                    <label for="delete_Role"><h6>Role</h6></label>
+                                    <select class="form-control" multiple required="required" size="2" id="delete_Role" disabled>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="USER">USER</option>
+                                    </select>
+                                </div>
+
+                                <!--submit-->
+                                <!--                                <button type="submit" class="btn btn-success" multiple size="2" id="delete_user_btn">delete new user-->
+                                <!--                                </button>-->
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger" data-dismiss="modal" id="delete_user_submit_btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="admin.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
