@@ -16,9 +16,6 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid ">
         <p class="navbar-brand text-white" id="user_info_navbar">
-            <!--            <span class="align-middle">##Unknown User##</span></b>-->
-            <!--            <span class="align-middle">with roles:</span>-->
-            <!--            <span class="align-middle">##Unknown##</span>-->
         </p>
         <ul class="navbar-nav px-4">
             <li class="nav-item text-nowrap">
@@ -27,8 +24,6 @@
         </ul>
     </div>
 </nav>
-
-
 
 
 <br>
@@ -62,7 +57,6 @@
                     <a class="nav-link " id="newUserLi" data-toggle="tab" href="#newUser" role="tab"
                        aria-controls="profile" aria-selected="false">New User</a>
                 </li>
-
             </ul>
 
 
@@ -97,14 +91,13 @@
                 </div>
 
 
-
                 <!--2 вкладка с новым юзером-->
                 <div class="tab-pane fade " id="newUser" role="tabpanel" aria-labelledby="profile-tab">
                     <h5 class="card-header">Add new user</h5>
                     <div class="container bg-white text-center fw-bolder">
                         <div class="row justify-content-center">
 
-                            <div class="col-4 " >
+                            <div class="col-4 ">
 
                                 <form id="add_user">
 
@@ -147,14 +140,16 @@
                                     <!--Role-->
                                     <div class="form-group">
                                         <label for="add_Role"><h6>Role</h6></label>
-                                        <select class="form-control" multiple required="required" size="2" id="add_Role">
+                                        <select class="form-control" multiple required="required" size="2"
+                                                id="add_Role">
                                             <option value="ADMIN">ADMIN</option>
                                             <option value="USER">USER</option>
                                         </select>
                                     </div>
 
                                     <!--submit-->
-                                    <button type="submit" class="btn btn-success" multiple size="2" id="add_user_btn">Add new user
+                                    <button type="submit" class="btn btn-success" multiple size="2" id="add_user_btn">
+                                        Add new user
                                     </button>
 
                                 </form>
@@ -162,7 +157,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </div>
 
@@ -172,11 +166,9 @@
 </div>
 
 
-
-
-
 <!--Edit Modal Frame-->
-<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -192,7 +184,7 @@
                 <div class="container bg-white text-center fw-bolder">
                     <div class="row justify-content-center">
 
-                        <div class="col-7 " >
+                        <div class="col-7 ">
 
                             <form id="edit_user">
 
@@ -248,11 +240,6 @@
                                         <option value="USER">USER</option>
                                     </select>
                                 </div>
-
-                                <!--submit-->
-                                <!--                                <button type="submit" class="btn btn-success" multiple size="2" id="edit_user_btn">edit new user-->
-                                <!--                                </button>-->
-
                             </form>
                         </div>
                     </div>
@@ -260,14 +247,16 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" id="edit_user_submit_btn">Edit</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" id="edit_user_submit_btn">Edit
+                </button>
             </div>
         </div>
     </div>
 </div>
 
 <!--delete Modal Frame-->
-<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -283,7 +272,7 @@
                 <div class="container bg-white text-center fw-bolder">
                     <div class="row justify-content-center">
 
-                        <div class="col-7 " >
+                        <div class="col-7 ">
 
                             <form id="delete_user">
 
@@ -323,17 +312,18 @@
                                            placeholder="Email">
                                 </div>
 
-<!--                                &lt;!&ndash;Password&ndash;&gt;-->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="delete_Password"><h6>Password</h6></label>-->
-<!--                                    <input type="password" class="form-control" id="delete_Password" disabled-->
-<!--                                           placeholder="Password">-->
-<!--                                </div>-->
+                                <!--                                &lt;!&ndash;Password&ndash;&gt;-->
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <label for="delete_Password"><h6>Password</h6></label>-->
+                                <!--                                    <input type="password" class="form-control" id="delete_Password" disabled-->
+                                <!--                                           placeholder="Password">-->
+                                <!--                                </div>-->
 
                                 <!--Role-->
                                 <div class="form-group">
                                     <label for="delete_Role"><h6>Role</h6></label>
-                                    <select class="form-control" multiple required="required" size="2" id="delete_Role" disabled>
+                                    <select class="form-control" multiple required="required" size="2" id="delete_Role"
+                                            disabled>
                                         <option value="ADMIN">ADMIN</option>
                                         <option value="USER">USER</option>
                                     </select>
@@ -350,13 +340,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger" data-dismiss="modal" id="delete_user_submit_btn">Delete</button>
+                <button type="submit" class="btn btn-danger" data-dismiss="modal" id="delete_user_submit_btn">Delete
+                </button>
             </div>
         </div>
     </div>
 </div>
-
-
 
 <script src="admin.js"></script>
 

@@ -20,7 +20,4 @@ public class ViewController {
     public String getLoginPage() {
         return "redirect:/login";
     }
-
-
-
 }

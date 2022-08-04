@@ -1,4 +1,3 @@
-
 const URL = 'http://localhost:8080/api/user'
 const userInfoNavbar = document.getElementById("user_info_navbar");
 const userInfoTable = document.getElementById("user_info_table");

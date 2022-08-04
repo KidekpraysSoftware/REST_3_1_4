@@ -1,8 +1,11 @@
 package com.kata.kidek.rest.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +15,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "users")
+@Transactional
 public class User implements UserDetails, Serializable {
 
     @Id
@@ -34,7 +38,8 @@ public class User implements UserDetails, Serializable {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
     private Set<Role> roles;
 
     public String rolesToString() {
@@ -49,10 +54,7 @@ public class User implements UserDetails, Serializable {
                 roles.append(role.toString());
                 switcher = false;
             }
-
-
         }
-
         return roles.toString();
     }
 

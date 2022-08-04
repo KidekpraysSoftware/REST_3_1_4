@@ -1,14 +1,18 @@
 package com.kata.kidek.rest.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.Set;
-//
+
 @Data
 @Entity
 @Table(name = "roles")
+@Transactional
 public class Role implements GrantedAuthority {
     @Id
     @Column(name = "id", nullable = false)
@@ -20,6 +24,7 @@ public class Role implements GrantedAuthority {
 
     @Transient
     @ManyToMany(mappedBy = "roles", cascade=CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
     private Set<User> users;
 
     @Override
